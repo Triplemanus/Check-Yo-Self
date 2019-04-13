@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:lighter,400,extrabold,800" rel="stylesheet">
+    <title>Check Yo' Self</title>
+  </head>
+  <body>
+    <header  class="header">
+        <head-left class="head-left"> 
+          <h1>Check Yo' Self</h1>
+        </head-left>
+        <head-center class="head-center">
+        </head-center>
+        <head-right class="head-right">
+             <form class="search-form" action="index.html" method="post">
+                <button class="search-button" type="button" name="button"><img class="search-img" src="assets/magnifier.svg" alt="Task search "></button>
+                <input id="search-input" placeholder="   Search ideas" type="text" name="" value="">
+             </form>
+        </head-right>
+    </header>
+    <main>
+    <section class="section-left">
+      <article class="sidebar-form">
+      <form class="title" action="index.html" method="post">
+          <div class="input-labels">
+                <label for="input-title">Task Title</label>
+                <input id="input-title" placeholder="" type="text" name="" value="">
+          </div>
+        <div class="input-labels">
+                <label for="input-item">Task Item</label>
+                <input id="input-item" placeholder="" type="text" name="" value="">
+          </div>
+        <button class="btn-make-list">Make Task List</button>
+        <button class="btn-input-clear">Clear All</button>
+        <button class="btn-filter-urgent">Filter by Urgency</button>
+      </form>
+     </article>
+    </section>
+    <section class="section-right">
+            <!-- function createIdeaCard(create) { -->
+                <!-- bottomDisplay.innerHTML = ` -->
+                <aside class="card" data-cardIdentifier="${create.id}">
+                  <div class="card-title">
+                    <img class="star-card-button" src="assets/star.svg" alt="">
+                      <img class="delete-card-button" src="https://image.flaticon.com/icons/svg/60/60578.svg" alt="">
+                  </div>
+                  <div class="card-body-title">
+                    <h3 class="idea-title" contenteditable="false">Task Title</h3>
+                    <p class="card-body-text" contenteditable="true">${create.body}</p>
+                    <p class="card-body-text" contenteditable="false">${create.id}</p>
+                  </div>
+                  <div class="card-footer">
+                    <img class="up-quality-button" src="assets/upvote.svg" alt="">
+                    <h4>Quality:<span class="quality-level-selection">Swill</span></h4>
+                    <img class="down-quality-button" src="assets/downvote.svg" alt="">
+                  </div>
+                </aside>
+                <!-- ` + bottomDisplay.innerHTML; -->
+              <!-- } -->
+        </section>
+      </main>
+    <script type="text/javascript" src="to-do-list.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+   </body>
+</html>
