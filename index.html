@@ -10,13 +10,13 @@
   <body>
     <header  class="header">
         <head-left class="head-left"> 
-          <h1>Check Yo' Self</h1>
+          <h1>CHECK  <span class="title-yellow-text">YO'</span> SELF</h1>
         </head-left>
         <head-center class="head-center">
         </head-center>
         <head-right class="head-right">
              <form class="search-form" action="index.html" method="post">
-                <button class="search-button" type="button" name="button"><img class="search-img" src="assets/magnifier.svg" alt="Task search "></button>
+                <button class="search-button" type="button" name="button"><img class="search-img" src="assets/search.svg" alt="Task search "></button>
                 <input id="search-input" placeholder="   Search ideas" type="text" name="" value="">
              </form>
         </head-right>
@@ -24,16 +24,16 @@
     <main>
     <section class="section-left">
       <article class="sidebar-form">
-      <form class="title" action="index.html" method="post">
+      <form class="add-task-card" action="index.html" method="post">
           <div class="input-labels">
                 <label for="input-title">Task Title</label>
-                <input id="input-title" placeholder="" type="text" name="" value="">
+                <input id="input-title" type="text" name="task-title" alt="Input for task list title" required>
           </div>
         <div class="input-labels">
                 <label for="input-item">Task Item</label>
-                <input id="input-item" placeholder="" type="text" name="" value="">
+                <input id="input-item" type="text" name="task-item" alt="Input for task list item">
           </div>
-        <button class="btn-make-list">Make Task List</button>
+        <input type="submit" class="submit-make-list" value="Make Task List">
         <button class="btn-input-clear">Clear All</button>
         <button class="btn-filter-urgent">Filter by Urgency</button>
       </form>
@@ -43,19 +43,22 @@
             <!-- function createIdeaCard(create) { -->
                 <!-- bottomDisplay.innerHTML = ` -->
                 <aside class="card" data-cardIdentifier="${create.id}">
-                  <div class="card-title">
-                    <img class="star-card-button" src="assets/star.svg" alt="">
-                      <img class="delete-card-button" src="https://image.flaticon.com/icons/svg/60/60578.svg" alt="">
-                  </div>
-                  <div class="card-body-title">
-                    <h3 class="idea-title" contenteditable="false">Task Title</h3>
+                  <p class="card-title-text">
+                    Task Title
+                  </p>
+                  <div class="card-body">
+                    <ul class="task-list">
+                      <li><img class="checkbox-img" src="assets/checkbox.svg" alt="card checkbox"></li>
+                    </ul >
+
+                    <!-- <h3 class="idea-title" contenteditable="false">Task Title</h3>
                     <p class="card-body-text" contenteditable="true">${create.body}</p>
-                    <p class="card-body-text" contenteditable="false">${create.id}</p>
+                    <p class="card-body-text" contenteditable="false">${create.id}</p> -->
                   </div>
                   <div class="card-footer">
-                    <img class="up-quality-button" src="assets/upvote.svg" alt="">
-                    <h4>Quality:<span class="quality-level-selection">Swill</span></h4>
-                    <img class="down-quality-button" src="assets/downvote.svg" alt="">
+                    <img class="urgent-flash-btn" src="assets/urgent.svg" alt="filter by urgent task">
+                    <h4>Fuck:<span class="send-a-message">Off</span></h4>
+                    <img class="delete-btn" src="assets/delete.svg" alt="delete task card">
                   </div>
                 </aside>
                 <!-- ` + bottomDisplay.innerHTML; -->
