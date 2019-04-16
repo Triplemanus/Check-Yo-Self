@@ -17,25 +17,35 @@
     height: 60px;
   }
   .head-right {
-      align-items: right;   
+    align-items: right;  
+    display: inline-block;
+    margin: 5px 20px;
+      
   }
   .title-yellow-text {
     color: #FFC303;
   }
   .search-form {
-      align-items: right;
-      height: 80%;
-      margin-top: 10px;
+    float: right;
+    height: 35px;
+    margin-top: 5px;
+    width: 200px;
   }
-  .search-input{
+  #search-input{
       height: 35px;
-      margin: 20px 0px 10px 0px
+      margin: 0px 0px 10px 0px;
+      width: 80%;
   }
   .search-button {
-      width: 10%;
+    height: 35px;
+      width: 35px;
   }
   .search-img {
-      width: 95%;
+    background-color: #587a8b;
+    border: none;
+    /* margin-top: 10px; */
+    width: 98%;
+  
   }
    main {
     display: grid;
@@ -54,35 +64,81 @@
     color: #BFBFDD;
     font-size: 12px;
     font-weight: light;
-    margin: 20px 10px;
+    height: 20px;
+    margin: 10px 10px;
   }
-
   .section-left {
     background-color: #587a8b;  
     height: 600px;
   }
 
+  .add-task-card {
+    border: 1px solid #3c6577;
+    display: inline;
+  }
+  .add-task-card input {
+    height: 40px;
+    width: 90%;
+  }
   .input-labels label {
-	display: block;
-	font-size: 10px;
-	color: #FFFFFF;
+    color: #FFFFFF;
+  	display: block;
+	  font-size: 12px;
     margin-top: 20px;
     margin-bottom: 10px;
-}
-
+  } 
   .input-title {
       height: 40px;
       width: 90%;
     margin: auto;
   }
+  .list-entry {
+    display: inline;
+  }
+  .task-content {
+    width: 80%;
+  }
+  .checkbox-img {
+    float: left;
+    margin: 7px 10px;
+    width: 20px;
+  }
+  p.task-content {
+    color: #FFFFFF;
+    height: 25px;
+    margin-left: 40px;
+    /* text-align: center; */
+    /* padding-top: .3em; */
+  }
+  /* .input-task-list {
+    align: center;
+    display: flex;
 
+  } */
+  .hidden {
+    display: none;
+ }
   .btn-input-clear,
   .submit-make-list,
   .btn-filter-urgent {
-      height 40px;
+
+      border: 1px solid #1F1F3D;
+      background-color: #1F1F3D;
+      color: #FFFFFF;
+      height: 40px;
+      margin: 10px 5px 10px 5px;
       width: 90%;
   }
-  .filter-urgent {
+  #input-item{
+    float: left;
+    width: 80%;
+  }
+  .btn-add-item {
+    height: 40px;
+    width: 40px;
+    border: 1px solid #1F1F3D;
+  }
+  .btn-filter-urgent {
       height: 40px;
       background-color: #D14119;
       color: #FFFFFF;
@@ -92,47 +148,6 @@
     background-color: #f4f7f8;  
     height: 600px;
   }
-  /* .purple-sidebar-btn {
-    background-color: #5356A4;
-    color: #E9E9F3;
-    border: 1px solid #353567;
-    font-size: 14px;
-    font-weight: bold;
-    font-stretch: expanded;
-    padding: 10px 0px;
-    width: 90%;
-    margin: 0px 10px 20px 10px;
-  }
-` */
-  
-  /* .new-quality-input {
-    height: 40px;
-    margin: 0px 10px 20px 10px;
-    width: 90%;
-  }
-  .empty-sidebar-bottom-box {
-    min-height: 600px;
-  }
-  .filter-buttons {
-    display: flex;
-    flex-direction: column;
-  } */
-  /* .filter-btn {
-    font-size: 16px;
-    font-weight: light;
-    text-align: left;
-    background-color: #1F1F3D;
-    border: none;
-    color: #FFF;
-    padding-left: 10px;
-  } */
-  /* .filter-btn:hover {
-    background-color: #D14119;
-    border-left: 3px solid #F58E72;
-  }
-  .sidebar-form {
-    border-bottom: 1px solid #353567;
-  } */
   
 .section-right {
     display: grid;
@@ -144,15 +159,16 @@
   }
   
   .card {
-    border: 1px solid #ffc30c;
     background-color: #FFE89D;
+    border: 1px solid #ffc30c;
+    min-width: 100px;
+    max-height: 300px;
   }
   .card-title-text {
     color: #1F1F3D;
     border-bottom: 1px solid #ffc30c;
   }
 
-  .p {}
   .card img {
     width: 10%
   }
@@ -160,23 +176,18 @@
   .delete-card-button {
     float: right;
   }
-  .card-body-title {
-    margin: 15px;
-    margin-top: 20px;
-    margin-right: 25px;
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
+
   .card-body-text {
     min-height: 125px;
     font-size: 20px;
   }
-  .card-title {
-    background-color: #1F1F3D;
+  .task-list {
+    list-style-type: none;
   }
-  .idea-title {
-    margin-top: 10px;
-    margin-bottom: 15px;
+  .urgent-flash-btn {
+    height: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
   .card-footer h4 {
     text-align: center;
@@ -190,5 +201,5 @@
     display: flex;
     align-items: center;
     padding: 5px;
-    height: 50px;
+    height: 40px;
   }
