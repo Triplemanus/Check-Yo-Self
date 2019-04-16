@@ -15,7 +15,7 @@ class ToDoList {
         var getTaskArray = localStorage.getItem('cardArray');
         var deleteArray = JSON.parse(getTaskArray);
         var filteredArray = deleteArray.filter(cArray => cArray.id !== parseInt(deleteCard));
-         cardArray= [];
+         taskCardArray= [];
         //localStorage.clear();
         filteredArray.forEach(function(el) {
           toDoList = new ToDoList(el.id, el.title, el.tasks);

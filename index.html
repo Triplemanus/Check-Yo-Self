@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:lighter,400,extrabold,800" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="formalize.css" /> -->
     <title>Check Yo' Self</title>
   </head>
   <body>
@@ -15,10 +16,10 @@
         <head-center class="head-center">
         </head-center>
         <head-right class="head-right">
-             <form class="search-form" action="index.html" method="post">
-                <button class="search-button" type="button" name="button"><img class="search-img" src="assets/search.svg" alt="Task search "></button>
-                <input id="search-input" placeholder="   Search ideas" type="text" name="" value="">
-             </form>
+          <form class="search-form" action="index.html" method="post">
+             <button class="search-button" type="button" name="button"><img class="search-img" src="assets/search.svg" alt="Task search "></button>
+             <input id="search-input" placeholder="   Search ideas" type="text" name="" value="">
+        </form>
         </head-right>
     </header>
     <main>
@@ -29,43 +30,33 @@
                 <label for="input-title">Task Title</label>
                 <input id="input-title" type="text" name="task-title" alt="Input for task list title" required>
           </div>
+          <section class="input-task-list">
+            <ul class="input-task-items-list">
+              <!-- <li class="list-entry">
+                <img class="checkbox-img" src="assets/delete.svg">
+                <p class="task-content">These are not the droids...</p>
+              </li> -->
+            </ul>
+          </section>
         <div class="input-labels">
                 <label for="input-item">Task Item</label>
                 <input id="input-item" type="text" name="task-item" alt="Input for task list item">
+                <input type="image" class="btn-add-item" img src="assets/plus.svg" name="add-item"></button>
           </div>
+        <!-- <button type="button" class="submit-make-list" value="Make Task List">Make Task List</button> -->
         <input type="submit" class="submit-make-list" value="Make Task List">
         <button class="btn-input-clear">Clear All</button>
-        <button class="btn-filter-urgent">Filter by Urgency</button>
       </form>
+        <button class="btn-filter-urgent">Filter by Urgency</button>
      </article>
     </section>
     <section class="section-right">
-            <!-- function createIdeaCard(create) { -->
-                <!-- bottomDisplay.innerHTML = ` -->
-                <aside class="card" data-cardIdentifier="${create.id}">
-                  <p class="card-title-text">
-                    Task Title
-                  </p>
-                  <div class="card-body">
-                    <ul class="task-list">
-                      <li><img class="checkbox-img" src="assets/checkbox.svg" alt="card checkbox"></li>
-                    </ul >
 
-                    <!-- <h3 class="idea-title" contenteditable="false">Task Title</h3>
-                    <p class="card-body-text" contenteditable="true">${create.body}</p>
-                    <p class="card-body-text" contenteditable="false">${create.id}</p> -->
-                  </div>
-                  <div class="card-footer">
-                    <img class="urgent-flash-btn" src="assets/urgent.svg" alt="filter by urgent task">
-                    <h4>Fuck:<span class="send-a-message">Off</span></h4>
-                    <img class="delete-btn" src="assets/delete.svg" alt="delete task card">
-                  </div>
-                </aside>
-                <!-- ` + bottomDisplay.innerHTML; -->
-              <!-- } -->
         </section>
       </main>
-    <script type="text/javascript" src="to-do-list.js"></script>
+    <script type="text/javascript" src="todolist.js"></script>
     <script type="text/javascript" src="main.js"></script>
-   </body>
+    <!-- <script src="jquery.js"></script> -->
+    <!-- <script src="jquery.formalize.js"></script> -->
+  </body>
 </html>
