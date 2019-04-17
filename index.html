@@ -10,25 +10,28 @@
   </head>
   <body>
     <header  class="header">
-        <head-left class="head-left"> 
+        <section class="head-left"> 
           <h1>CHECK  <span class="title-yellow-text">YO'</span> SELF</h1>
-        </head-left>
-        <head-center class="head-center">
-        </head-center>
-        <head-right class="head-right">
+        </section>
+        <!-- <head-center class="head-center">
+        </head-center> -->
+        <!-- <head-right class="head-right"> -->
           <form class="search-form" action="index.html" method="post">
-             <button class="search-button" type="button" name="button"><img class="search-img" src="assets/search.svg" alt="Task search "></button>
-             <input id="search-input" placeholder="   Search ideas" type="text" name="" value="">
+            
+             <div class="search-container">
+              <img  class="search-img" src="assets/search.svg" alt="Task search ">
+             </div>
+             <input id="search-input" placeholder="   Search ideas" type="text">
         </form>
-        </head-right>
+        <!-- </head-right> -->
     </header>
     <main>
     <section class="section-left">
       <article class="sidebar-form">
       <form class="add-task-card" action="index.html" method="post">
-          <div class="input-labels">
-                <label for="input-title">Task Title</label>
-                <input id="input-title" type="text" name="task-title" alt="Input for task list title" required>
+          <div class="input-labels-task-title">
+                <label class="input-labels-task-title-label" for="input-title">Task Title</label>
+                <input id="input-labels-task-title-input" type="text" name="task-title" alt="Input for task list title" required>
           </div>
           <section class="input-task-list">
             <ul class="input-task-items-list">
@@ -40,8 +43,10 @@
           </section>
         <div class="input-labels">
                 <label for="input-item">Task Item</label>
-                <input id="input-item" type="text" name="task-item" alt="Input for task list item">
-                <input type="image" class="btn-add-item" img src="assets/plus.svg" name="add-item"></button>
+                <div class="input-labels-conent-container">
+                  <input id="input-item" type="text" name="task-item" alt="Input for task list item">
+                  <img  class="btn-add-item" src="assets/plus.svg" name="add-item"> 
+                </div>
           </div>
         <!-- <button type="button" class="submit-make-list" value="Make Task List">Make Task List</button> -->
         <input type="submit" class="submit-make-list" value="Make Task List">
