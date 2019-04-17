@@ -139,9 +139,7 @@
     display: none;
  }
   .btn-input-clear,
-  .submit-make-list,
-  .btn-filter-urgent {
-
+  .submit-make-list {
       border: 1px solid #1F1F3D;
       background-color: #1F1F3D;
       color: #FFFFFF;
@@ -149,6 +147,15 @@
       margin: 10px 5px 10px 13px;
       width: 90%;
   }
+
+  .btn-filter-urgent {
+    border: 1px solid #1F1F3D;
+    background-color: #1F1F3D;
+    color: #FFFFFF;
+    height: 40px;
+    margin: 10px 5px 10px 13px;
+    width: 90%;
+}
 
   .input-labels-task-title {
     margin-left: auto;
