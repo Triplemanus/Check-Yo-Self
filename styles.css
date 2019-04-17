@@ -76,7 +76,6 @@
   }
 
   .add-task-card {
-    border: 1px solid #3c6577;
     display: inline;
   }
   .add-task-card {
@@ -243,3 +242,16 @@
     padding: 5px;
     height: 40px;
   }
+
+  @media only screen and (max-width: 920px) {
+    .section-right {
+      grid-template-columns: 45% 45%;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  .section-right {
+    grid-template-columns: 70%;
+}
+}
+
