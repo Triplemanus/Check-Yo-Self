@@ -6,17 +6,25 @@ var listEntry = document.querySelector(".input-task-items-list");
 var createTaskItem = document.querySelector(".btn-add-item");
 var cardTaskList = document.querySelector(".task-list");
 var deleteButton = document.querySelector(".delete-card-btn");
-var checkTask = document.querySelector(".task-checkBox");
+var checkTask = document.querySelector(".checkbox-img");
+var clearListItems = document.querySelector(".btn-input-clear");
 var taskCardArray = [];
 var taskItemArray = [];
 let toDolist = new ToDoList ();
 var taskArrayIdx = 0;
+var isChecked = false;
 
 // ---------------Event-listeners---------------------------//
 window.addEventListener('load', setup(), true);
 createTaskList.addEventListener('submit', addTaskCard);
 createTaskItem.addEventListener('click', addTaskItem);
 sectionRight.addEventListener('click', deleteCard);
+sectionRight.addEventListener('click', flipCheckbox);
+sectionRight.addEventListener('click', deleteTaskItemList);
+
+
+
+
 
 
 //-----------------Functions-------------------------------//
@@ -37,6 +45,7 @@ function addTaskCard (e) {
   // createTaskCard(taskItemArray, taskList);
   createTaskCard(toDoList, indexCntr);
   addTaskItems2Card(toDoList, indexCntr);
+  deleteTaskItemList();
   storeCards(taskCardArray);
   taskArrayIdx++;
 }
@@ -66,7 +75,10 @@ function storeCards(objTaskList){
       <img class="checkbox-img" src="assets/delete.svg">
       <p class="task-content">${itemList.content}</p>
     </li>
-   `;
+   `
+ }
+ function deleteTaskItemList() {
+   listEntry.innerHTML = ``;
  }
   function createTaskCard(taskList, index) {
     console.log(taskList);
@@ -101,9 +113,13 @@ function deleteCard(e) {
 };
 
 function flipCheckbox(e) {
-  if(e.target.className === "task-checkBox") {
+  if(e.target.className === "checkbox-img") {
     alert('Fuck off Checkbox Style!');
-    
+    var checkBox = e.target.id;
+ console.log(checkBox);
+
+    (isChecked) ? e.target.src = "assets/checkbox.svg" : e.target.src = "assets/checkbox-active.svg";
+    (isChecked) ? isChecked = false : isChecked = true;
   }
 }
 
@@ -113,9 +129,9 @@ function addTaskItems2Card(items2Add, index){
     idCntr++;
     index = items2Add.id + idCntr.toString();
     return `
-   <li>
-     <img class="checkbox-img" src="assets/checkbox.svg" alt="card checkbox">
-     <input type="checkbox"  class="hidden task-checkbox" data-index=${index} id="item${index}" ${items2Add.tasks.done ? 'chcecked' : ''} 
+   <li class="list-item" data-index=${index}li id=${index}li>
+     <img class="checkbox-img" src="assets/checkbox.svg" data-index=${index}img  id="item${index}img" alt="card checkbox">
+     <input type="checkbox"  class="hidden task-checkbox" data-index=${index}cbx  id="item${index}cbx"${items2Add.tasks.done ? 'chcecked' : ''} 
      <label for="">${items2Add.tasks[idCntr - 1].content}</label>
    </li>
    `;
@@ -123,6 +139,15 @@ function addTaskItems2Card(items2Add, index){
   return taskListHTML;
 }
 
+function checkTaskInputs () {
+  var titleInput = cardTitleInput.value;
+  var bodyInput = cardBodyInput.value;
+  if (titleInput === "" || bodyInput === "") {
+    saveButton.disabled = true;
+  } else {
+    saveButton.disabled = false;
+  }
+}
 
   function setup() {
     if(localStorage.getItem('cardArray')){
@@ -136,6 +161,7 @@ function addTaskItems2Card(items2Add, index){
         taskArrayIdx++;
       });
     }
+
   }
 
 

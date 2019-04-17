@@ -12,9 +12,10 @@
    }
    header {
     background-color: #1f1f3d;
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
+    display: flex;
+    justify-content: space-between;
     height: 60px;
+    align-items: center;
   }
   .head-right {
     align-items: right;  
@@ -26,27 +27,29 @@
     color: #FFC303;
   }
   .search-form {
-    float: right;
     height: 35px;
-    margin-top: 5px;
-    width: 200px;
+    width: 210px;
+    display: flex;
   }
   #search-input{
       height: 35px;
-      margin: 0px 0px 10px 0px;
-      width: 80%;
+      width: 165px;
+      border: 1px solid white;
   }
-  .search-button {
-    height: 35px;
-      width: 35px;
-  }
-  .search-img {
-    background-color: #587a8b;
-    border: none;
+  .search-container {
+    background-color: lightgray;
     /* margin-top: 10px; */
-    width: 98%;
-  
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
+  .search-img {
+    height: 20px;
+  }
+
    main {
     display: grid;
     grid-template-columns: 30% 65%;
@@ -57,7 +60,7 @@
      color: #FFF;
      font-weight: ExtraBold;
      font-size: 28px;
-     margin: 10px 10px 0px 10px;
+     margin-left: 10px;
    }
 
    h2 {
@@ -76,37 +79,54 @@
     border: 1px solid #3c6577;
     display: inline;
   }
-  .add-task-card input {
+  .add-task-card {
     height: 40px;
-    width: 90%;
+    width: 100%;
   }
-  .input-labels label {
+  .input-labels {
     color: #FFFFFF;
-  	display: block;
 	  font-size: 12px;
     margin-top: 20px;
     margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
   } 
   .input-title {
       height: 40px;
       width: 90%;
     margin: auto;
   }
+
+
   .list-entry {
-    display: inline;
+    display: flex;
+    margin-top: 10px;
   }
+
   .task-content {
     width: 80%;
   }
   .checkbox-img {
-    float: left;
-    margin: 7px 10px;
     width: 20px;
+    height: 20px;
+    margin-left: 10px;
   }
+
+  .input-labels-conent-container {
+    width: 100%;
+    display: flex;
+  }
+
+  .input-labels-task-title-label {
+    color: #FFFFFF;
+    font-size: 12px;
+  }
+
   p.task-content {
     color: #FFFFFF;
     height: 25px;
-    margin-left: 40px;
+    margin-left: 10px;
     /* text-align: center; */
     /* padding-top: .3em; */
   }
@@ -126,16 +146,29 @@
       background-color: #1F1F3D;
       color: #FFFFFF;
       height: 40px;
-      margin: 10px 5px 10px 5px;
+      margin: 10px 5px 10px 13px;
       width: 90%;
   }
+
+  .input-labels-task-title {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    
+  }
+
+  #input-labels-task-title-input {
+    height: 40px;
+  }
+
   #input-item{
-    float: left;
-    width: 80%;
+    width: 82%;
   }
   .btn-add-item {
     height: 40px;
-    width: 40px;
+    width: 18%;
     border: 1px solid #1F1F3D;
   }
   .btn-filter-urgent {
