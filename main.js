@@ -8,6 +8,11 @@ var cardTaskList = document.querySelector(".task-list");
 var deleteButton = document.querySelector(".delete-card-btn");
 var checkTask = document.querySelector(".checkbox-img");
 var clearListItems = document.querySelector(".btn-input-clear");
+var makeCardButton = document.querySelector(".submit-make-list");
+var inputCardTitle = document.querySelector("#input-labels-task-title-input");
+var inputTaskItem = document.querySelector("#input-item");
+var searchBox = document.querySelector("#search-input");
+
 var taskCardArray = [];
 var taskItemArray = [];
 let toDolist = new ToDoList ();
@@ -20,7 +25,10 @@ createTaskList.addEventListener('submit', addTaskCard);
 createTaskItem.addEventListener('click', addTaskItem);
 sectionRight.addEventListener('click', deleteCard);
 sectionRight.addEventListener('click', flipCheckbox);
-sectionRight.addEventListener('click', deleteTaskItemList);
+clearListItems.addEventListener('click', deleteTaskItemList);
+inputCardTitle.addEventListener('keyup', checkCardInputs);
+inputTaskItem.addEventListener('keyup', checkCardInputs);
+searchBox.addEventListener('keyup', searchRealtime);
 
 
 
@@ -35,11 +43,8 @@ function addTaskCard (e) {
   // const taskItem = (this.querySelector('[name=task-item]')).value;
   var cardID = Date.now();
   indexCntr = 0;
-
   toDoList = new ToDoList(cardID, taskTitle, false, taskItemArray);
  taskCardArray[taskArrayIdx] = toDoList;
-
-  // console.log(toDoList);
   this.reset();
   // taskItemArray.push(task);
   // createTaskCard(taskItemArray, taskList);
@@ -64,6 +69,7 @@ function addTaskItem(e) {
   console.log(taskItemArray);
   document.querySelector('[name=task-item]').value = '';
   createTaskItemList(item);
+  checkItemLists();
 }
 
 function storeCards(objTaskList){
@@ -139,17 +145,50 @@ function addTaskItems2Card(items2Add, index){
   return taskListHTML;
 }
 
-function checkTaskInputs () {
-  var titleInput = cardTitleInput.value;
-  var bodyInput = cardBodyInput.value;
-  if (titleInput === "" || bodyInput === "") {
-    saveButton.disabled = true;
+function checkCardInputs () {
+  var titleInput = inputCardTitle.value;
+  var taskItems = document.querySelector('.list-entry');
+  if (titleInput === "" ||  taskItems === null) {
+    makeCardButton.disabled = true;
+    makeCardButton.style.background='lightgrey';
   } else {
-    saveButton.disabled = false;
+    makeCardButton.disabled = false;
+    makeCardButton.style.background='#1F1F3D';
   }
 }
 
+  function checkItemLists () {
+    var titleInput = inputCardTitle.value;
+    var taskItems = document.querySelector('.list-entry');
+    if (taskItems === null) {
+
+      clearListItems.disabled = true;
+      clearListItems.style.background='lightgrey';
+    } else {
+      clearListItems.disabled = false;
+      clearListItems.style.background='#1F1F3D';
+  }
+}
+
+function searchRealtime(subStrInput){
+  var subString = searchBox.value;
+  var searchArray = taskCardArray;
+  console.log('Search input value = ' + subString);
+  // var arrayBody = searchArray.filter(search => search.body.toLowerCase().includes(subString.toLowerCase()));
+  var arrayTitle = searchArray.filter(search => search.title.toLowerCase().includes(subString.toLowerCase()));
+  // var concatArray = combineArrays(arrayBody, arrayTitle);
+  // var concatArray = resultArray.concat(resultArrayTitle); 
+  sectionRight.innerHTML = '';
+  // if(concatArray.length > 0) {
+  // concatArray.forEach(function(idea) {
+  arrayTitle.forEach(function(taskCard) {
+    createTaskCard(taskCard);
+    });
+  }
+
   function setup() {
+    checkCardInputs();
+    checkItemLists();
     if(localStorage.getItem('cardArray')){
       var getTaskArray = localStorage.getItem('cardArray');
       var currentTaskInfo = JSON.parse(getTaskArray);
