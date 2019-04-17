@@ -30,43 +30,32 @@ inputCardTitle.addEventListener('keyup', checkCardInputs);
 inputTaskItem.addEventListener('keyup', checkCardInputs);
 searchBox.addEventListener('keyup', searchRealtime);
 
-
-
-
-
-
 //-----------------Functions-------------------------------//
 function addTaskCard (e) {
   e.preventDefault();
-  console.log(e);
   const taskTitle = (this.querySelector('[name=task-title]')).value;
-  // const taskItem = (this.querySelector('[name=task-item]')).value;
   var cardID = Date.now();
   indexCntr = 0;
   toDoList = new ToDoList(cardID, taskTitle, false, taskItemArray);
  taskCardArray[taskArrayIdx] = toDoList;
   this.reset();
-  // taskItemArray.push(task);
-  // createTaskCard(taskItemArray, taskList);
   createTaskCard(toDoList, indexCntr);
   addTaskItems2Card(toDoList, indexCntr);
   deleteTaskItemList();
   storeCards(taskCardArray);
   taskArrayIdx++;
+  checkCardInputs();
+  checkItemLists();
 }
 
 function addTaskItem(e) {
-  console.log(e);
   e.preventDefault();
   const taskItem = (document.querySelector('[name=task-item]')).value;
-  // var taskItem = taskItem.value;
-  console.log(taskItem);
   const item = {
     content: taskItem, 
     done: false
   };
   taskItemArray.push(item);
-  console.log(taskItemArray);
   document.querySelector('[name=task-item]').value = '';
   createTaskItemList(item);
   checkItemLists();
@@ -82,6 +71,7 @@ function storeCards(objTaskList){
       <p class="task-content">${itemList.content}</p>
     </li>
    `
+   checkCardInputs();
  }
  function deleteTaskItemList() {
    listEntry.innerHTML = ``;
@@ -123,7 +113,6 @@ function flipCheckbox(e) {
     alert('Fuck off Checkbox Style!');
     var checkBox = e.target.id;
  console.log(checkBox);
-
     (isChecked) ? e.target.src = "assets/checkbox.svg" : e.target.src = "assets/checkbox-active.svg";
     (isChecked) ? isChecked = false : isChecked = true;
   }
@@ -173,14 +162,9 @@ function checkCardInputs () {
 function searchRealtime(subStrInput){
   var subString = searchBox.value;
   var searchArray = taskCardArray;
-  console.log('Search input value = ' + subString);
-  // var arrayBody = searchArray.filter(search => search.body.toLowerCase().includes(subString.toLowerCase()));
+  // console.log('Search input value = ' + subString);
   var arrayTitle = searchArray.filter(search => search.title.toLowerCase().includes(subString.toLowerCase()));
-  // var concatArray = combineArrays(arrayBody, arrayTitle);
-  // var concatArray = resultArray.concat(resultArrayTitle); 
   sectionRight.innerHTML = '';
-  // if(concatArray.length > 0) {
-  // concatArray.forEach(function(idea) {
   arrayTitle.forEach(function(taskCard) {
     createTaskCard(taskCard);
     });
@@ -194,7 +178,6 @@ function searchRealtime(subStrInput){
       var currentTaskInfo = JSON.parse(getTaskArray);
       currentTaskInfo.forEach(function(toDoList){
         createTaskCard(toDoList);  
-        // cardArray.push(idea);
         toDoList = new ToDoList(toDoList.id, toDoList.title, toDoList.false, toDoList.tasks);
         taskCardArray[taskArrayIdx] = toDoList;
         taskArrayIdx++;
@@ -202,31 +185,3 @@ function searchRealtime(subStrInput){
     }
 
   }
-
-
-
-
-  // <li>
-  // <img class="checkbox-img" src="assets/checkbox.svg" alt="card checkbox">
-  // <input type="checkbox" class="hidden" data-index=${index} id="item-${index}" ${taskList.completed ? 'checked' : ''} 
-  // <label for="item${index}">${taskList.tasks}</label>
-  // </li>
-
-  // function addTaskCard (e) {
-//   e.preventDefault();
-//   const taskTitle = (this.querySelector('[name=task-title]')).value;
-//   const taskItem = (this.querySelector('[name=task-item]')).value;
-  
-//   const task = {
-//     taskTitle,
-//     taskItem,
-//     completed: false
-//   };
-
-//   console.log(task);
-//   this.reset();
-//   taskItemArray.push(task);
-//   createTaskCard(taskItemArray, taskList);
-// }
-
-// function createTaskCard(taskArray, taskList) {
