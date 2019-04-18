@@ -32,7 +32,7 @@ class ToDoList {
       var getTaskArray = localStorage.getItem('cardArray');
       var updatedArray = JSON.parse(getTaskArray);
       var urgentCardindex = updatedArray.findIndex(cArray => cArray.id !== parseInt(updateCard));
-      taskCardArray= [];
+    //   taskCardArray= [];
       //localStorage.clear();
     //   filteredArray.forEach(function(el) {
     //     toDoList = new ToDoList(el.id, el.title, el.urgent, el.tasks);
@@ -49,9 +49,8 @@ class ToDoList {
         var arrayIndx = 0;
         var getTaskArray = localStorage.getItem('cardArray');
         var deleteArray = JSON.parse(getTaskArray);
-        var filteredArray = deleteArray.filter(cArray => cArray.id !== parseInt(updateCard));
-         taskCardArray= [];
-        //localStorage.clear();
+        var filteredArray = deleteArray.findIndex(cArray => cArray.id !== parseInt(updateCard));
+        //  taskCardArray= [];
         filteredArray.forEach(function(el) {
           toDoList = new ToDoList(el.id, el.title, el.urgent, el.tasks);
           taskCardArray[arrayIndx] = toDoList;
