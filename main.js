@@ -12,10 +12,11 @@ var makeCardButton = document.querySelector(".submit-make-list");
 var inputCardTitle = document.querySelector("#input-labels-task-title-input");
 var inputTaskItem = document.querySelector("#input-item");
 var searchBox = document.querySelector("#search-input");
+var deleteTaskButton = document.querySelector(".checkbox-image")
 
 var taskCardArray = [];
 var taskItemArray = [];
-let toDolist = new ToDoList ();
+var toDolist = new ToDoList();
 var taskArrayIdx = 0;
 var isChecked = false;
 
@@ -29,6 +30,7 @@ clearListItems.addEventListener('click', deleteTaskItemList);
 inputCardTitle.addEventListener('keyup', checkCardInputs);
 inputTaskItem.addEventListener('keyup', checkCardInputs);
 searchBox.addEventListener('keyup', searchRealtime);
+listEntry.addEventListener('click', deleteTaskItem);
 
 //-----------------Functions-------------------------------//
 function addTaskCard (e) {
@@ -89,9 +91,11 @@ function storeCards(objTaskList){
       </ul>
    </div>
    <div class="card-footer">
-      <img class="urgent-flash-btn" src="assets/urgent.svg" alt="filter by urgent task">
-      <h2>Fuck:<span class="send-a-message">Off</span></h2>
-      <img class="delete-card-btn" src="assets/delete.svg" alt="delete task card">
+        <img class="urgent-flash-btn" src="assets/urgent.svg" alt="filter by urgent task">
+      <div>
+        <img class="delete-card-btn" src="assets/delete.svg" alt="delete task card">
+        <p>DELETE</p>
+      </div>  
     </div>
   </aside>
    `  + sectionRight.innerHTML; 
@@ -100,19 +104,37 @@ function storeCards(objTaskList){
 function deleteCard(e) {
   // console.log(e);
   if (e.target.className === "delete-card-btn") { 
-    alert('Fuck off!');
     var card = e.target.closest(".card");
-    var rtrndArray = toDoList.deleteFromStorage(card.dataset.cardidentifier);
+   toDoList.deleteFromStorage(card.dataset.cardidentifier);
   //  console.log('cardArray after deleteCard function: ' + cardArray);
     e.target.closest(".card").remove();
+  } else if (e.target.className === "urgent-flash-btn") {
+    console.log('YeeHaaaa!!!');
+    var card = e.target.closest(".card")
+    toDolist.updateToDo(card.dataset.cardidentifier);
+
   }
 };
 
+function deleteTaskItem(e) {
+  console.log(e);
+  console.log('Hot damn, we made it!');
+  if(e.target.className === "checkbox-img") {
+  var listItem = e.target.closest(".list-entry");
+  console.log(listItem);
+  e.target.closest(".list-entry").remove();
+  }
+};
+
+function makeFakeCard() {
+  toDolist = new ToDoList();
+}
 function flipCheckbox(e) {
   if(e.target.className === "checkbox-img") {
-    alert('Fuck off Checkbox Style!');
     var checkBox = e.target.id;
- console.log(checkBox);
+    var listItem = e.target.closest(".list-item");
+    console.log(listItem.dataset.index);
+    console.log(checkBox);
     (isChecked) ? e.target.src = "assets/checkbox.svg" : e.target.src = "assets/checkbox-active.svg";
     (isChecked) ? isChecked = false : isChecked = true;
   }
@@ -125,8 +147,8 @@ function addTaskItems2Card(items2Add, index){
     index = items2Add.id + idCntr.toString();
     return `
    <li class="list-item" data-index=${index}li id=${index}li>
-     <img class="checkbox-img" src="assets/checkbox.svg" data-index=${index}img  id="item${index}img" alt="card checkbox">
-     <input type="checkbox"  class="hidden task-checkbox" data-index=${index}cbx  id="item${index}cbx"${items2Add.tasks.done ? 'chcecked' : ''} 
+     <img class="checkbox-img" src="assets/checkbox.svg" data-index=${index}img  id="${index}img" alt="card checkbox">
+     <input type="checkbox"  class="hidden task-checkbox" data-index=${index}cbx  id="${index}cbx"${items2Add.tasks.done ? 'chcecked' : ''} 
      <label for="">${items2Add.tasks[idCntr - 1].content}</label>
    </li>
    `;
@@ -177,11 +199,12 @@ function searchRealtime(subStrInput){
       var getTaskArray = localStorage.getItem('cardArray');
       var currentTaskInfo = JSON.parse(getTaskArray);
       currentTaskInfo.forEach(function(toDoList){
-        createTaskCard(toDoList);  
-        toDoList = new ToDoList(toDoList.id, toDoList.title, toDoList.false, toDoList.tasks);
-        taskCardArray[taskArrayIdx] = toDoList;
-        taskArrayIdx++;
+      createTaskCard(toDoList);  
+      toDoList = new ToDoList(toDoList.id, toDoList.title, toDoList.false, toDoList.tasks);
+      taskCardArray[taskArrayIdx] = toDoList;
+      taskArrayIdx++;
       });
     }
-
   }
+
+  //<h2><span class="send-a-message"></span></h2>

@@ -10,7 +10,7 @@ class ToDoList {
         localStorage.setItem('cardArray', stringifiedContact);
     }
 
-    deleteFromStorage() {
+    deleteFromStorage(deleteCard) {
         var arrayIndx = 0;
         var getTaskArray = localStorage.getItem('cardArray');
         var deleteArray = JSON.parse(getTaskArray);
@@ -18,7 +18,7 @@ class ToDoList {
          taskCardArray= [];
         //localStorage.clear();
         filteredArray.forEach(function(el) {
-          toDoList = new ToDoList(el.id, el.title, el.tasks);
+          toDoList = new ToDoList(el.id, el.title, el.urgent, el.tasks);
           taskCardArray[arrayIndx] = toDoList;
           arrayIndx++
         })
@@ -27,12 +27,38 @@ class ToDoList {
         localStorage.setItem('cardArray', stringifiedCardArray);
       }
 
-    updateToDo() {
-
+    updateToDo(updateCard) {
+      var arrayIndx = 0;
+      var getTaskArray = localStorage.getItem('cardArray');
+      var deleteArray = JSON.parse(getTaskArray);
+      var filteredArray = deleteArray.filter(cArray => cArray.id !== parseInt(updateCard));
+      taskCardArray= [];
+      //localStorage.clear();
+      filteredArray.forEach(function(el) {
+        toDoList = new ToDoList(el.id, el.title, el.urgent, el.tasks);
+        taskCardArray[arrayIndx] = toDoList;
+        arrayIndx++
+      })
+    //   taskArrayIdx--;
+      var stringifiedCardArray = JSON.stringify(taskCardArray);
+      localStorage.setItem('cardArray', stringifiedCardArray);
     }
 
-    updateTask() {
-        
+    updateTask(updateCard) {
+        var arrayIndx = 0;
+        var getTaskArray = localStorage.getItem('cardArray');
+        var deleteArray = JSON.parse(getTaskArray);
+        var filteredArray = deleteArray.filter(cArray => cArray.id !== parseInt(updateCard));
+         taskCardArray= [];
+        //localStorage.clear();
+        filteredArray.forEach(function(el) {
+          toDoList = new ToDoList(el.id, el.title, el.urgent, el.tasks);
+          taskCardArray[arrayIndx] = toDoList;
+          arrayIndx++
+        })
+        taskArrayIdx--;
+        var stringifiedCardArray = JSON.stringify(taskCardArray);
+        localStorage.setItem('cardArray', stringifiedCardArray);    
     }
 }
 
