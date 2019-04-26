@@ -59,6 +59,22 @@ function addTaskCard (e) {
 }
 }
 
+
+function setup() {
+  checkCardInputs();
+  checkItemLists();
+  if(localStorage.getItem('cardArray')){
+    var getTaskArray = localStorage.getItem('cardArray');
+    var currentTaskInfo = JSON.parse(getTaskArray);
+    currentTaskInfo.forEach(function(toDoList){
+    createTaskCardOnReload(toDoList, taskArrayIdx);  
+    toDoList = new ToDoList(toDoList.id, toDoList.title, toDoList.false, toDoList.tasks);
+    taskCardArray[taskArrayIdx] = toDoList;
+    taskArrayIdx++;
+    });
+  }
+}
+
 function addTaskItem(e) {
   if (e.target.className === "btn-add-item")
   e.preventDefault();
@@ -124,7 +140,6 @@ function storeCards(objTaskList){
    `  + sectionRight.innerHTML;
 }
 
-
 function deleteCard(e) {
   if (e.target.className === "delete-card-btn") { 
     var card = e.target.closest(".card");
@@ -154,10 +169,6 @@ function filterByUrgent () {
     buttonFilterUrgent.style.color='#FFFFFF';
   }
 }
-}
-
-function makeFakeCard() {
-  toDolist = new ToDoList();
 }
 
 function flipCheckbox(e) {
@@ -222,17 +233,32 @@ function searchRealtime(subStrInput){
     });
   }
 
-  function setup() {
-    checkCardInputs();
-    checkItemLists();
-    if(localStorage.getItem('cardArray')){
-      var getTaskArray = localStorage.getItem('cardArray');
-      var currentTaskInfo = JSON.parse(getTaskArray);
-      currentTaskInfo.forEach(function(toDoList){
-      createTaskCard(toDoList);  
-      toDoList = new ToDoList(toDoList.id, toDoList.title, toDoList.false, toDoList.tasks);
-      taskCardArray[taskArrayIdx] = toDoList;
-      taskArrayIdx++;
-      });
-    }
-  }
+  function createTaskCardOnReload(taskList, index) {
+    console.log(taskList);
+    var taskItems = addTaskItems2Card(taskList, index);
+  sectionRight.innerHTML = `
+  <aside class="card" data-cardIdentifier="${taskList.id}">
+  <p class="card-title-text">${taskList.title}</p>
+    <div class="card-body">
+      <p class="task-list">
+        
+      </p><p>${taskItems}</p>
+   </div>
+   <div class="card-footer">
+      <div class="card-footer-btn-container">
+        <img class="urgent-flash-btn" src="${taskList.urgent ? 'assets/urgent-active.svg' : 'assets/urgent.svg'}" alt="filter by urgent task">
+        <p class="card-footer-text">URGENT</p>
+      </div>
+      <div class="card-footer-btn-container">
+        <img class="delete-card-btn" src="assets/delete.svg" alt="delete task card">
+        <p class="card-footer-text">DELETE</p>
+      </div>
+    </div>
+  </aside>
+   `  + sectionRight.innerHTML;
+}
+
+
+
+
+
